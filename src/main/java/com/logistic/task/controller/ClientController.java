@@ -29,28 +29,25 @@ public class ClientController {
     private final ClientService clientService;
     private final ClientMapper clientMapper;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE )
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ClientDto>> findAll() {
         return ResponseEntity.ok(clientMapper.toDto(clientService.findAll()));
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE )
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClientDto> create(@RequestBody @Valid ClientDto clientDto) {
-
-
         clientService.save(clientMapper.toEntity(clientDto));
-
         return ResponseEntity.status(HttpStatus.CREATED).body(clientDto);
     }
 
-    @GetMapping(value ="/{id}",produces = MediaType.APPLICATION_JSON_VALUE )
+    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClientDto> findById(@PathVariable Long id) {
         Optional<Client> product = clientService.findById(id);
 
         return ResponseEntity.ok(clientMapper.toDto(product.get()));
     }
 
-    @PutMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE )
+    @PutMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClientDto> update(@PathVariable @Valid Long id, @RequestBody @Valid ClientDto clientDto) {
       Client client = clientMapper.toEntity(clientDto);
         client.setId(id);
@@ -60,7 +57,7 @@ public class ClientController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(clientDto);
     }
 
-    @DeleteMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE )
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity delete(@PathVariable @Valid Long id) {
         if(!clientService.findById(id).isPresent()){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

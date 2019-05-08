@@ -38,7 +38,6 @@ public class AddressController {
     @PostMapping
     public ResponseEntity<AddressDto> create(@RequestBody AddressDto addressDto) {
         addressService.save(addressMapper.toEntity(addressDto));
-
         return ResponseEntity.status(HttpStatus.CREATED).body(addressDto);
     }
 
@@ -50,7 +49,8 @@ public class AddressController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AddressDto> update(@PathVariable Long id, @RequestBody AddressDto addressDto) {
+    public ResponseEntity<AddressDto> update(final @PathVariable Long id,
+                                             @RequestBody AddressDto addressDto) {
         Address address = addressMapper.toEntity(addressDto);
         address.setId(id);
 
