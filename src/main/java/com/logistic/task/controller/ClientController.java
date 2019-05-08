@@ -1,7 +1,10 @@
 package com.logistic.task.controller;
 
+import com.logistic.task.dto.AddressDto;
 import com.logistic.task.dto.ClientDto;
+import com.logistic.task.entity.Address;
 import com.logistic.task.entity.Client;
+import com.logistic.task.mapper.AddressMapper;
 import com.logistic.task.mapper.ClientMapper;
 import com.logistic.task.service.ClientService;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +29,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/clients")
 public class ClientController {
+
     private final ClientService clientService;
     private final ClientMapper clientMapper;
+    private final AddressMapper addressMapper;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ClientDto>> findAll() {
@@ -40,10 +45,16 @@ public class ClientController {
         return ResponseEntity.status(HttpStatus.CREATED).body(clientDto);
     }
 
+    @GetMapping(value = "/{id}/address",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AddressDto> returnAddressByClientId(@PathVariable Long id) {
+        Address address = clientService.returnAddressByClientId(id);
+
+        return ResponseEntity.ok(addressMapper.toDto(address));
+    }
+
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClientDto> findById(@PathVariable Long id) {
         Optional<Client> product = clientService.findById(id);
-
         return ResponseEntity.ok(clientMapper.toDto(product.get()));
     }
 
