@@ -15,7 +15,9 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column
     private String address; // заглушка
+
 
     public Address(String address) {
         this.address = address;

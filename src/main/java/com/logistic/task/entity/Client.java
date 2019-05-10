@@ -16,7 +16,9 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
     private String name;
+    @Column
     private String phoneNumber;
     @ManyToOne(cascade=CascadeType.ALL)
     private Address address;

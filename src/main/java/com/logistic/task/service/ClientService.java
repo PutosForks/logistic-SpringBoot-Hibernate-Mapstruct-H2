@@ -21,13 +21,13 @@ public class ClientService {
     private final ClientRepository productRepository;
 
     public List<Client> findAll() {
+        log.info("findall");
         return productRepository.findAll();
     }
 
     public Optional<Client> findById(Long id) {
         return productRepository.findById(id);
     }
-
 
     public Client save(Client stock) {
         return productRepository.save(stock);

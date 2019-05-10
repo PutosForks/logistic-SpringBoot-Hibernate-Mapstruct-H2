@@ -9,8 +9,6 @@ import lombok.Setter;
  * This class is developed by Ivanov Alexey (mrSlilex@gmail.com) on 07.05.2019
  */
 @Data
-@Getter
-@Setter
 public class VehicleDto {
     private long id;
     private VehicleState vehicleState;

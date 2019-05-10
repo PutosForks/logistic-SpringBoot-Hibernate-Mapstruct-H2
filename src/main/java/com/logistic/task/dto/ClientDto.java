@@ -10,10 +10,6 @@ import javax.validation.constraints.Size;
  */
 
 @Data
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
 public class ClientDto {
 
     private long id;
