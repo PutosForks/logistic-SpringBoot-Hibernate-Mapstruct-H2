@@ -1,10 +1,8 @@
 package com.logistic.task.controller;
 
-import com.logistic.task.dto.AddressDto;
 import com.logistic.task.dto.ClientDto;
 import com.logistic.task.entity.Address;
 import com.logistic.task.entity.Client;
-import com.logistic.task.mapper.AddressMapper;
 import com.logistic.task.mapper.ClientMapper;
 import com.logistic.task.service.ClientService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+
+import static java.lang.String.format;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.OK;
 
 
 /**
@@ -32,49 +34,63 @@ public class ClientController {
 
     private final ClientService clientService;
     private final ClientMapper clientMapper;
-    private final AddressMapper addressMapper;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
+            (produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ClientDto>> findAll() {
-        return ResponseEntity.ok(clientMapper.toDto(clientService.findAll()));
+        return ResponseEntity.
+                ok(clientMapper.toDto(clientService.findAll()));
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ClientDto> create(@RequestBody @Valid ClientDto clientDto) {
-        clientService.save(clientMapper.toEntity(clientDto));
-        return ResponseEntity.status(HttpStatus.CREATED).body(clientDto);
+    @PostMapping
+            (produces = MediaType.
+                    APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> create(@RequestBody @Valid ClientDto clientDto) {
+        clientDto = clientService.save(clientDto);
+        return ResponseEntity.
+                status(HttpStatus.CREATED).body(clientDto);
     }
 
-    @GetMapping(value = "/{id}/address",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AddressDto> returnAddressByClientId(@PathVariable Long id) {
-        Address address = clientService.returnAddressByClientId(id);
 
-        return ResponseEntity.ok(addressMapper.toDto(address));
+    @GetMapping(value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> findById(@PathVariable("id") long id) {
+        Optional<Client> client = clientService.findById(id);
+        if (!client.isPresent()) {
+            return new ResponseEntity<>
+                    (format("No Client found for ID %d", id), NOT_FOUND);
+        }
+        return ResponseEntity.
+                ok(clientMapper.toDto(client.get()));
     }
 
-    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ClientDto> findById(@PathVariable Long id) {
-        Optional<Client> product = clientService.findById(id);
-        return ResponseEntity.ok(clientMapper.toDto(product.get()));
+    @GetMapping("{clientId}/address")
+    public ResponseEntity<?> getAddressByClientId(@PathVariable long clientId) {
+        List<Address> addressesDto = clientService.getAddressByClientId(clientId);
+        if (addressesDto == null) {
+            return new ResponseEntity<>(format("Client %d or address doesn't exist", clientId), NOT_FOUND);
+        }
+        return new ResponseEntity<>(addressesDto, OK);
     }
 
-    @PutMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ClientDto> update(@PathVariable @Valid Long id, @RequestBody @Valid ClientDto clientDto) {
-      Client client = clientMapper.toEntity(clientDto);
-        client.setId(id);
-
-        clientService.save(client);
-
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(clientDto);
+    @PutMapping(value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<@Valid ClientDto> update(@PathVariable("id") Long id, @RequestBody @Valid ClientDto clientDto) {
+        clientDto = clientService.update(id, clientDto);
+                return ResponseEntity.
+                        status(HttpStatus.ACCEPTED).body(clientDto);
     }
 
-    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity delete(@PathVariable @Valid Long id) {
+    @DeleteMapping(value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity delete(@PathVariable Long id) {
         if(!clientService.findById(id).isPresent()){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return new ResponseEntity<>
+                    (format("No Client found for ID %d", id), NOT_FOUND);
         }
         clientService.deleteById(id);
 
-        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+        return ResponseEntity.
+                status(HttpStatus.ACCEPTED).build();
     }
 }

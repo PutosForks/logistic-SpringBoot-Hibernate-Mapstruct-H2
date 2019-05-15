@@ -2,6 +2,8 @@ package com.logistic.task.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,11 +21,12 @@ public class Crew {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private Date date;
-    @ElementCollection(targetClass=Person.class)
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(targetEntity=Person.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Person> crewList;
 
-    public Crew(Date date) {
+    public Crew(Date date, List<Person> crewList) {
         this.date = date;
+        this.crewList = crewList;
     }
 }

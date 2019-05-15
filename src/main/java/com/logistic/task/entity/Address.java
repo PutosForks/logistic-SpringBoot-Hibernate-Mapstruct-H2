@@ -15,11 +15,18 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column
     private String address; // заглушка
+    @ManyToOne(targetEntity=Client.class)
+    @JoinColumn
+    private Client client;
 
 
     public Address(String address) {
         this.address = address;
+    }
+
+    public Address(String address, Client client) {
+        this.address = address;
+        this.client = client;
     }
 }

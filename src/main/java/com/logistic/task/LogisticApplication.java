@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Slf4j
 @SpringBootApplication
-@ComponentScan({"com.logistic.task.config",
+@ComponentScan({
         "com.logistic.task.controller",
 "com.logistic.task.service",
 "com.logistic.task.mapper"})

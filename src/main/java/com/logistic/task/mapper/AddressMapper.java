@@ -2,7 +2,10 @@ package com.logistic.task.mapper;
 
 import com.logistic.task.dto.AddressDto;
 import com.logistic.task.entity.Address;
+import com.logistic.task.entity.Client;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 
 import java.util.List;
 
@@ -12,6 +15,7 @@ import java.util.List;
 @Mapper
 public interface AddressMapper extends BaseMapper<AddressDto, Address> {
     @Override
+
     AddressDto toDto(Address address);
 
     @Override
@@ -22,4 +26,10 @@ public interface AddressMapper extends BaseMapper<AddressDto, Address> {
 
     @Override
     List<Address> toEntity(List<AddressDto> addressDtos);
+
+    default Client createClientById(long id) {
+        Client client = new Client();
+        client.setId(id);
+        return client;
+    }
 }

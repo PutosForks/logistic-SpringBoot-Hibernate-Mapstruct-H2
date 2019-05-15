@@ -4,6 +4,8 @@ import com.logistic.task.entity.Address;
 import lombok.*;
 
 import javax.validation.constraints.Size;
+import java.util.List;
+import java.util.Set;
 
 /**
  * This class is developed by Ivanov Alexey (mrSlilex@gmail.com) on 07.05.2019
@@ -17,5 +19,5 @@ public class ClientDto {
     private String Name;
     @Size(max = 25)
     private String PhoneNumber;
-    private Address address;
+    private List<Address> address;
 }

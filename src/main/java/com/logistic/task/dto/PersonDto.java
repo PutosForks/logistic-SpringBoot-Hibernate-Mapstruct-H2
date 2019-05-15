@@ -4,6 +4,8 @@ import com.logistic.task.entity.Address;
 import com.logistic.task.entity.Shift;
 import lombok.*;
 
+import java.util.List;
+
 /**
  * This class is developed by Ivanov Alexey (mrSlilex@gmail.com) on 07.05.2019
  */
@@ -11,7 +13,6 @@ import lombok.*;
 public class PersonDto {
     private long id;
     private String name;
-    private int phoneNumber;
-    private Address address;
-    private Shift shift;        // рабочая смена
+    private String phoneNumber;
+    private List<Shift> shifts;        // рабочая смена
 }

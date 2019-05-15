@@ -2,8 +2,11 @@ package com.logistic.task.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * This class is developed by Ivanov Alexey (mrSlilex@gmail.com) on 07.05.2019
@@ -17,16 +20,17 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
-    private int phoneNumber;
-    @ManyToOne(cascade=CascadeType.ALL)
-    private Address address;
-    @ManyToOne(cascade=CascadeType.ALL)
-    private Shift shift;        // рабочая смена
+    private String phoneNumber;
+    @ManyToOne(targetEntity=Crew.class)
+    @JoinColumn
+    private Crew crew;
+    @OneToMany(targetEntity=Shift.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Shift> shifts;        // рабочая смена
 
-    public Person(String name, int phoneNumber, Address address, Shift shift) {
+    public Person(String name, String phoneNumber, List<Shift> shifts) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.shift = shift;
+        this.shifts = shifts;
     }
 }
