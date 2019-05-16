@@ -28,6 +28,9 @@ public class Client {
     @OneToMany(targetEntity=Address.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Address> address;
+    @ManyToOne(targetEntity = Flight.class)
+    @JoinColumn
+    private Flight flight;
 
     public Client(String name, String phoneNumber, List<Address> address) {
         this.name = name;

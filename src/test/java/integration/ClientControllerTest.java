@@ -11,12 +11,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.when;
 import static java.lang.Integer.MIN_VALUE;
-
 import static javax.servlet.http.HttpServletResponse.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 

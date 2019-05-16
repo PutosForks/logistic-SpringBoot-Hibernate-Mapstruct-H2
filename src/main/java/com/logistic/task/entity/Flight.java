@@ -2,6 +2,8 @@ package com.logistic.task.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,11 +19,12 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(targetEntity=Client.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Client> clients;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Vehicle vehicle;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Crew crew;
 
 

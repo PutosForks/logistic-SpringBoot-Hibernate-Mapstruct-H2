@@ -1,15 +1,9 @@
 package com.logistic.task.controller;
 
 import com.logistic.task.dto.AddressDto;
-
-import com.logistic.task.dto.ClientDto;
 import com.logistic.task.entity.Address;
-
-import com.logistic.task.entity.Client;
 import com.logistic.task.mapper.AddressMapper;
-
 import com.logistic.task.service.AddressService;
-import com.logistic.task.service.AddressServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,7 +15,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-import static javafx.beans.binding.Bindings.format;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 /**
@@ -52,7 +45,8 @@ public class AddressController {
                 status(HttpStatus.CREATED).body(addressDto);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> findById(@PathVariable Long id) {
         Optional<Address> client = addressService.findById(id);
         if (!client.isPresent()) {
@@ -64,7 +58,8 @@ public class AddressController {
     }
 
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AddressDto> update(final @PathVariable Long id,
                                              @RequestBody AddressDto addressDto) {
         addressDto = addressService.update(id, addressDto);
@@ -72,7 +67,8 @@ public class AddressController {
                 status(HttpStatus.ACCEPTED).body(addressDto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity delete(@PathVariable Long id) {
         if(!addressService.findById(id).isPresent()){
             return new ResponseEntity<>
