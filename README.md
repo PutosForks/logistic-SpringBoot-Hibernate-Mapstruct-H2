@@ -1,11 +1,12 @@
 # logistic-SpringBoot-Hibernate-Mapstruct-H2
+# Project Information
 
 [![codecov](https://codecov.io/gh/Slilex/logistic-SpringBoot-Hibernate-Mapstruct-H2/branch/master/graph/badge.svg)](https://codecov.io/gh/Slilex/logistic-SpringBoot-Hibernate-Mapstruct-H2)
 
 
 Если необходимо запустить через postgress, то следующие найстроки вставить в \src\main\resources\application.properties
 
-spring.jpa.database=POSTGRESQL
+spring.jpa.database=POSTGRESQL \n
 spring.datasource.platform=postgres
 spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
 spring.datasource.username=postgres
