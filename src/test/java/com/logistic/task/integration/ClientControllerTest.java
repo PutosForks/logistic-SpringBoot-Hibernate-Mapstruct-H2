@@ -34,7 +34,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
     @Autowired
     private TestHelper testHelper;
 
-
     @Before
     public void setUp() throws Exception {
         client = testHelper.createClient();

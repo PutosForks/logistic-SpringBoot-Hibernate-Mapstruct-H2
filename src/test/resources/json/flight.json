@@ -1,0 +1,31 @@
+{
+  "clients": [
+    {
+      "name": "Mishka",
+      "phoneNumber": "+3-123-210",
+      "address": [
+        {
+          "address":"newaddress"
+        }
+      ]
+    }
+  ],
+  "vehicle": {
+    "vehicleState":"Good",
+    "carNumber": "AM6985FV"
+  },
+  "crew": {
+    "date": 1557969517109,
+    "crewList": [
+      {
+        "name": "Vanya",
+        "phoneNumber": "+10589586",
+        "shifts": [
+          {
+            "stubHealthChangeEtc": "shhift"
+          }
+        ]
+      }
+    ]
+  }
+}

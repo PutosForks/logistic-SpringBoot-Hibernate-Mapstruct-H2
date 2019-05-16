@@ -1,0 +1,9 @@
+{
+  "name": "PersonName",
+  "phoneNumber": "+3-96-89544",
+  "shifts": [
+    {
+      "stubHealthChangeEtc":"shiftForPerson"
+    }
+  ]
+}

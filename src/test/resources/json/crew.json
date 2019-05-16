@@ -1,0 +1,14 @@
+{
+  "date": 1557964079584,
+  "crewList": [
+    {
+      "name": "Igor",
+      "phoneNumber": "+101010",
+      "shifts": [
+        {
+          "stubHealthChangeEtc":"shhift"
+        }
+      ]
+    }
+  ]
+}
