@@ -18,21 +18,3 @@ in src\test\resources\json
 #
 #
 #
-"get /clients - 
-                all entitys - Client \n 
-                     Address \n 
-                "   Crew\n" +
-                "    Flight\n" +
-                "    Person\n" +
-                "    Shift\n" +
-                "    Vehicle\n" +
-                "\n"+"\n"+"\n"+"\n"+
-                "all Request"+
-                "\n"+"\n"+"\n"+"\n"+
-                "/clients"+"\n"+
-                "/address"+"\n"+
-                "/crew"+"\n"+
-                "/flight"+"\n"+
-                "/person"+"\n"+
-                "/shift"+"\n"+
-                "/vehicle"+"\n";
