@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-/**
+ /**
  * This class is developed by Ivanov Alexey (mrSlilex@gmail.com) on 07.05.2019
  */
 @Entity
@@ -21,7 +21,8 @@ public class Crew {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private Date date;
-    @OneToMany(targetEntity=Person.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity=Person.class,
+            cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Person> crewList;
 

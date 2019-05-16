@@ -4,8 +4,6 @@ import com.logistic.task.entity.Client;
 import com.logistic.task.entity.Crew;
 import com.logistic.task.entity.Vehicle;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 

@@ -1,22 +1,19 @@
 package com.logistic.task.service;
 
 import com.logistic.task.dto.CrewDto;
-import com.logistic.task.entity.Address;
 import com.logistic.task.entity.Crew;
 import com.logistic.task.mapper.CrewMapper;
 import com.logistic.task.repository.CrewRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.beans.BeanUtils.copyProperties;
 
-/**
+ /**
  * This class is developed by Ivanov Alexey (mrSlilex@gmail.com) on 15.05.2019
  */
 @Slf4j

@@ -5,7 +5,6 @@ import lombok.*;
 
 import javax.validation.constraints.Size;
 import java.util.List;
-import java.util.Set;
 
 /**
  * This class is developed by Ivanov Alexey (mrSlilex@gmail.com) on 07.05.2019

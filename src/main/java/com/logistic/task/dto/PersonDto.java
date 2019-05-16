@@ -1,6 +1,5 @@
 package com.logistic.task.dto;
 
-import com.logistic.task.entity.Address;
 import com.logistic.task.entity.Shift;
 import lombok.*;
 

@@ -2,8 +2,6 @@ package com.logistic.task.dto;
 
 import com.logistic.task.entity.Person;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;

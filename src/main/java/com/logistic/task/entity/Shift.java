@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * This class is developed by Ivanov Alexey (mrSlilex@gmail.com) on 07.05.2019
