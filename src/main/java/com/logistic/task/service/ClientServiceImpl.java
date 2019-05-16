@@ -103,11 +103,6 @@ public class ClientServiceImpl implements ClientService{
         Optional<Client> byId = clientRepository.findById(clientId);
         Client client = byId.get();
 
-        System.out.println("-----------------------------------------------------------------------");
-        System.out.println(client.toString());
-        System.out.println("-----------------------------------------------------------------------");
-
-
         return byId.get().getAddress();
 
     }

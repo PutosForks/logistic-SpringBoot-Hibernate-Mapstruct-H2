@@ -67,12 +67,6 @@ public class VehicleServiceImpl implements VehicleService {
         Vehicle source = mapper.toEntity(vehicleDto);
         log.info("Updating person {}", source);
         Vehicle target = repository.findById(id).get();
-      /*  try {
-            copyProperties(target, source);
-        } catch (Exception e) {
-            log.error
-            ("Can't get properties from object to updatable object for client", e);
-        }*/
         target.setCarNumber(source.getCarNumber());
         target.setVehicleState(source.getVehicleState());
         target.setId(id);

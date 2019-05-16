@@ -66,11 +66,6 @@ public class CrewServiceImpl implements CrewService {
         Crew source = mapper.toEntity(dto);
         log.info("Updating crew {}", source);
         Crew target = repository.findById(id).get();
-       /* try {
-            copyProperties(target, source);
-        } catch (Exception e) {
-            log.error("Can't get properties from object to updatable object for crew", e);
-        }*/
        target.setCrewList(source.getCrewList());
        target.setDate(source.getDate());
        target.setId(id);

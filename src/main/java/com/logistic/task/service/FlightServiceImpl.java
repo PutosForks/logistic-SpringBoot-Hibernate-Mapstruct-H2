@@ -67,11 +67,6 @@ public class FlightServiceImpl implements FlightService {
         Flight source = mapper.toEntity(flightDto);
         log.info("Updating flight {}", source);
         Flight target = repository.findById(id).get();
-      /*  try {
-            copyProperties(target, source);
-        } catch (Exception e) {
-            log.error("Can't get properties from object to updatable object for client", e);
-        }*/
         target.setClients(source.getClients());
         target.setCrew(source.getCrew());
         target.setVehicle(source.getVehicle());

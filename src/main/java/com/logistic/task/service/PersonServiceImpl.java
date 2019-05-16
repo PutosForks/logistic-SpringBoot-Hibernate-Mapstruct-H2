@@ -66,15 +66,10 @@ public class PersonServiceImpl implements PersonService {
         Person source = mapper.toEntity(personDto);
         log.info("Updating person {}", source);
         Person target = repository.findById(id).get();
-      /*  try {
-            copyProperties(target, source);
-        } catch (Exception e) {
-            log.error("Can't get properties from object to updatable object for client", e);
-        }*/
-      target.setShifts(source.getShifts());
-      target.setName(source.getName());
-      target.setPhoneNumber(source.getPhoneNumber());
-      target.setCrew(source.getCrew());
+        target.setShifts(source.getShifts());
+        target.setName(source.getName());
+         target.setPhoneNumber(source.getPhoneNumber());
+        target.setCrew(source.getCrew());
         target.setId(id);
 
         repository.save(target);

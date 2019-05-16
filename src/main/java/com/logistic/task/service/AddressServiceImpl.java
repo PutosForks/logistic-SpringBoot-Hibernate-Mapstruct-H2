@@ -63,11 +63,6 @@ public class AddressServiceImpl implements AddressService {
         Address source = addressMapper.toEntity(addressDto);
         log.info("Updating address {}", source);
         Address target = addressRepository.findById(id).get();
-      /*  try {
-            copyProperties(target, source);
-        } catch (Exception e) {
-            log.error("Can't get properties from object to updatable object for client", e);
-        }*/
         target.setAddress(source.getAddress());
         target.setClient(source.getClient());
         target.setId(id);
