@@ -1,5 +1,4 @@
 # logistic-SpringBoot-Hibernate-Mapstruct-H2
-# Project Information
 
 [![codecov](https://codecov.io/gh/Slilex/logistic-SpringBoot-Hibernate-Mapstruct-H2/branch/master/graph/badge.svg)](https://codecov.io/gh/Slilex/logistic-SpringBoot-Hibernate-Mapstruct-H2)
 
@@ -17,24 +16,5 @@ spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 
 
-запуск на порту 8080 
-запросы для клиента:
-/clients 
-get - выведет список клиентов
-post  - создаст клиента
-/clients/ID  put  -обновление клиента по id
-/clients/ID  delete удаление клиента ID.
-
-
-json client :
-
-{
-  "id":0,
-  "address":
-  {
-    "id":0,
-    "address":"address"
-  },
-  "name":"Ginger",
-  "phoneNumber":"+3-000-000"
-}
+#
+postman/json in src\test\resources\json
