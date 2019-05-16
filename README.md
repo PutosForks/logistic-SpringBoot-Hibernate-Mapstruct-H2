@@ -13,19 +13,14 @@ spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 
 
-#postman/json 
+# postman/json 
 in src\test\resources\json
 #
 #
 #
-"get /clients - вывод всех клиетов сохраненных в базе"+ "\n"
-                +"get /clients/5 - вывод всех клиета с ID 5 "+ "\n"
-                +"post /clients/ - сохранение переданного Json в объект и в базу" +"\n"
-                +"put /clients/ID - обновление переданого в Json обекта по ID" +"\n"
-                +"delete /clients/ID - удаление клиента по ID"+
-                "\n"+
-                "all entitys - Client\n" +
-                "     Address\n" +
+"get /clients - 
+                all entitys - Client \n 
+                     Address \n 
                 "   Crew\n" +
                 "    Flight\n" +
                 "    Person\n" +
