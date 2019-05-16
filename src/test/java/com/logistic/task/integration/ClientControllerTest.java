@@ -1,4 +1,4 @@
-package integration;
+package com.logistic.task.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.logistic.task.dto.ClientDto;

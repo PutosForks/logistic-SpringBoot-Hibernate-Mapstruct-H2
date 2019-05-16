@@ -1,4 +1,4 @@
-package integration;
+package com.logistic.task.integration;
 
 
 import java.io.IOException;
